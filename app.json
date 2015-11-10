@@ -1,0 +1,15 @@
+{
+  "name": "Hull Optimizely Sync",
+  "description": "A Hull integration for Optimizely Sync.",
+  "repository": "https://github.com/hull-ships/hull-optimizely",
+  "website": "http://www.hull.io",
+  "success_url": "/",
+  "addons": ["scheduler:standard"],
+  "env": {
+    "SECRET" : {
+      "description" : "A Secret key used to authenticate on Hull API",
+      "generator" : "secret"
+    }
+  },
+  "scripts": {}
+}

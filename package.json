@@ -1,0 +1,51 @@
+{
+  "name": "hull-optimizely",
+  "description": "Install Optimizely in your site",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hull-ships/hull-optimizely",
+  "license": "MIT",
+  "main": "dist/ship.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "lint": "eslint src",
+    "test": "karma start",
+    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors"
+  },
+  "engines": {
+    "node": "4.x",
+    "npm": "2.x"
+  },
+  "author": {
+    "name": "Hull",
+    "email": "contact@hull.io",
+    "url": "https://github.com/hull"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hull-ships/hull-optimizely"
+  },
+  "bugs": {
+    "url": "https://github.com/hull-ships/hull-optimizely/issues"
+  },
+  "keywords": [
+    "hull",
+    "ship",
+    "hull-ship"
+  ],
+  "dependencies": {
+    "babel": "^5.8.23",
+    "body-parser": "^1.14.1",
+    "core-js": "^1.2.5",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "hull": "hull/hull-node#640281fad1c0c080603955e34b2a8b06bc8f1efe",
+    "json-loader": "^0.5.3",
+    "optimizely-node": "0.0.3",
+    "rimraf": "^2.4.3"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "babel-loader": "^5.3.2"
+  }
+}

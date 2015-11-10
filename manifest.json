@@ -1,0 +1,45 @@
+{
+  "name": "Optimizely",
+  "description": "Optimizely Hull sync",
+  "picture": "picture.png",
+  "index": "ship.js",
+  "version": "0.0.1",
+  "settings": [
+    {
+      "name": "audiences",
+      "format": "hidden",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "audience_id": {
+            "type": "integer"
+          },
+          "segment_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "segment_id",
+          "audience_id"
+        ]
+      }
+    }
+  ],
+  "private_settings" : [
+    {
+      "name": "optimizely_api_key",
+      "type": "string",
+      "required" : true
+    },
+    {
+      "name": "optimizely_project_id",
+      "type": "integer",
+      "required" : true
+    }
+  ]
+}
