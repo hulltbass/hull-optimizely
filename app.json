@@ -1,6 +1,6 @@
 {
   "name": "Hull Optimizely Sync",
-  "description": "A Hull integration for Optimizely Sync.",
+  "description": "A Hull Integration for Optimizely Sync.",
   "repository": "https://github.com/hull-ships/hull-optimizely",
   "website": "http://www.hull.io",
   "success_url": "/",

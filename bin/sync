@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+require("babel/register");
+var SyncAgent = require('../server/sync_agent');
+
+var ORG_URL = process.env.HULL_ORG_URL;
+var SHIP_ID = process.env.HULL_SHIP_ID;
+var SECRET  = process.env.SECRET;
+
+
+if (ORG_URL && SHIP_ID) {
+  SyncAgent.sync(ORG_URL, SHIP_ID, SECRET).then(function(ship) {
+    console.log('Sync ok');
+  }, (err) => {
+    console.warn('Error', err.toString());
+  });
+} else {
+  console.warn('Missing credentials');
+}

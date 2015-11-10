@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node server/index.js",
     "lint": "eslint src",
-    "test": "karma start",
-    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors"
+    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors",
+    "sync": "./bin/sync"
   },
   "engines": {
     "node": "4.x",
