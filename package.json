@@ -38,7 +38,7 @@
     "core-js": "^1.2.5",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "hull": "hull/hull-node#640281fad1c0c080603955e34b2a8b06bc8f1efe",
+    "hull": "hull/hull-node",
     "json-loader": "^0.5.3",
     "optimizely-node": "0.0.3",
     "rimraf": "^2.4.3"

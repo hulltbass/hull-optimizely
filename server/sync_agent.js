@@ -1,4 +1,4 @@
-import Hull from 'hull';
+import Hull from './hull';
 import Optimizely from 'optimizely-node';
 import { createHmac } from 'crypto';
 
