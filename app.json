@@ -9,6 +9,12 @@
     "SECRET" : {
       "description" : "A Secret key used to authenticate on Hull API",
       "generator" : "secret"
+    },
+    "HULL_ORG_URL" : {
+      "description" : "Hull Organization URL"
+    },
+    "HULL_SHIP_ID" : {
+      "description" : "Default Ship ID"
     }
   },
   "scripts": {}
