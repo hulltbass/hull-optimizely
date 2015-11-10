@@ -42,9 +42,7 @@
     "hull": "hull/hull-node",
     "json-loader": "^0.5.3",
     "optimizely-node": "0.0.3",
-    "rimraf": "^2.4.3"
-  },
-  "devDependencies": {
+    "rimraf": "^2.4.3",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0",
     "babel-loader": "^5.3.2"
