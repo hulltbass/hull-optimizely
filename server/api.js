@@ -27,13 +27,16 @@ app.get('/manifest.json', (req, res, next) => {
   res.sendFile(path.resolve(__dirname, '..', 'manifest.json'));
 });
 
-app.post('/sync', (req, res, next) => {
+
+function handleSync(req, res) {
   res.type('application/json');
-  const { orgUrl, shipId } = req.body;
+
+  const orgUrl = req.body.orgUrl || process.env.HULL_ORG_URL;
+  const shipId = req.body.shipId || process.env.HULL_SHIP_ID;
+
   if (orgUrl && shipId) {
     SyncAgent.sync(orgUrl, shipId, SECRET).then((ship) => {
-      const data = JSON.stringify(ship, ' ', 2);
-      console.warn('Voici mon anchois', ship);
+      const data = JSON.stringify(ship.settings.audiences, ' ', 2);
       res.status(200).send(data).end();
     }, (err) => {
       res.status(500).send('Ballotin: ' + err.toString()).end();
@@ -41,7 +44,11 @@ app.post('/sync', (req, res, next) => {
   } else {
     res.status(400).send({ error: 'Missing orgUrl or AppId' }).end();
   }
-});
+}
+
+
+app.post('/sync', handleSync);
+app.get('/sync', handleSync);
 
 
 export default app;

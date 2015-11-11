@@ -28,9 +28,7 @@
           "audience_id"
         ]
       }
-    }
-  ],
-  "private_settings" : [
+    },
     {
       "name": "optimizely_api_key",
       "type": "string",
