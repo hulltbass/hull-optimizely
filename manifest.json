@@ -1,7 +1,8 @@
 {
-  "name": "Optimizely",
-  "description": "Optimizely Hull sync",
+  "name": "Optimizely Ship",
+  "description": "Supercharge Optmizely, send Hull segments as Audiences",
   "picture": "picture.png",
+  "readme": "readme.md",
   "index": "ship.js",
   "version": "0.0.1",
   "settings": [

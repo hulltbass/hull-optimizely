@@ -1,6 +1,6 @@
 {
   "name": "hull-optimizely",
-  "description": "Install Optimizely in your site",
+  "description": "Supercharge Optmizely, send Hull segments as Audiences",
   "version": "0.0.1",
   "homepage": "https://github.com/hull-ships/hull-optimizely",
   "license": "MIT",

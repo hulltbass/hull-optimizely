@@ -23,7 +23,6 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/manifest.json', (req, res, next) => {
-  console.warn('Marnifest ?');
   res.sendFile(path.resolve(__dirname, '..', 'manifest.json'));
 });
 
