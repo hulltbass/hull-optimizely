@@ -26,8 +26,8 @@ export default class Optimizely {
   push(data) {
     window['optimizely'] = window['optimizely'] || [];
     const { push } = window['optimizely'];
-    if (push) {
-      return push(data);
+    if (window['optimizely'] && typeof(window['optimizely'].push) === 'function') {
+      return  window['optimizely'].push(data);
     }
   }
 
