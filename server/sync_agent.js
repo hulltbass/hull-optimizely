@@ -50,7 +50,7 @@ export default class SyncAgent {
   }
 
   getOptimizelyProjectApiKey() {
-    const settings = this.ship.private_settings || this.ship.settings;
+    const settings = this.ship.private_settings;
     return settings.optimizely_api_key;
   }
 
