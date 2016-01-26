@@ -13,6 +13,7 @@ if (ORG_URL && SHIP_ID) {
     console.log('Sync ok');
   }, (err) => {
     console.warn('Error', err.toString());
+    console.warn('Error', err.stack);
   });
 } else {
   console.warn('Missing credentials');

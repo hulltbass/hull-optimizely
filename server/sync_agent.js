@@ -1,4 +1,4 @@
-import Hull from './hull';
+import Hull from 'hull';
 import Optimizely from 'optimizely-node';
 import { createHmac } from 'crypto';
 
@@ -22,7 +22,7 @@ export default class SyncAgent {
     return getHullClient(orgUrl, shipId, secret)
       .get(shipId)
       .then((res) => {
-        return new SyncAgent(orgUrl, res.data, secret).sync();
+        return new SyncAgent(orgUrl, res, secret).sync();
       });
   }
 
@@ -137,7 +137,7 @@ export default class SyncAgent {
 
         return Promise.all(syncing).then((audienceSettings) => {
           this.saveAudienceSettings(audienceSettings).then((savedShip) => {
-            return resolve(savedShip.data);
+            return resolve(savedShip);
           })
         });
       }, reject);
