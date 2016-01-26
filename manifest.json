@@ -33,11 +33,13 @@
     "private_settings": [
     {
       "name": "optimizely_api_key",
+      "title": "Optimizely API Key",
       "type": "string",
       "required" : true
     },
     {
       "name": "optimizely_project_id",
+      "title": "Optimizely Project ID",
       "type": "integer",
       "required" : true
     }
