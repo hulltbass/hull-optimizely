@@ -2,8 +2,9 @@
   "name": "Hull Optimizely",
   "description": "Supercharge Optmizely, send Hull segments as Audiences",
   "picture": "picture.png",
-  "ui":false,
   "index": "ship.js",
+  "readme": "readme.md",
+  "ui":false,
   "version": "0.0.1",
   "settings": [
     {
@@ -45,6 +46,5 @@
       "required": true
     }
   ],
-  "readme": "readme.md",
   "subscriptions" : [ { "url" : "/notify" } ]
 }
