@@ -1,0 +1,5 @@
+deployment:
+  ship:
+    branch: master
+    heroku:
+      appname: hull-optimizely

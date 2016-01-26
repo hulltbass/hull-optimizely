@@ -7,16 +7,16 @@ __The Optimizely Ship allows you to sync your Hull Segments as Optimizely Audien
 When a user matches a segment you created in Hull using properties and events, he will be added immediately to a matching Optimizely Audience, allowing you to create experiments and customize pages in real-time.
 
 ### Instant Personalization with Optimizely and Hull
-_More and more, customers expect brands to understand their current situation, and adapt to their needs. In this tutorial, we'll look at the case of customers who already have bought once something from you but aren't anymore. They keep coming back and looking at some product on your website, but don't make a purchasing decision. Obviously they're interested in something but they need a little help._  
+_More and more, customers expect brands to understand their current situation, and adapt to their needs. In this tutorial, we'll look at the case of customers who already have bought once something from you but aren't anymore. They keep coming back and looking at some product on your website, but don't make a purchasing decision. Obviously they're interested in something but they need a little help._
 
 _Let's give them a little nudge, by offering a 10% off coupon._
 
 #### First, create your segment in Hull.
-A good way to name your segments is to describe "who they are", instead of "what you want to do with them". Who they are doesn't change between tools, what you might want to do with them does.  
-- Good: `Churning customers`  
-- Bad: `10% off`  
+A good way to name your segments is to describe "who they are", instead of "what you want to do with them". Who they are doesn't change between tools, what you might want to do with them does.
+- Good: `Churning customers`
+- Bad: `10% off`
 
-###### Let's define a churning customer: 
+###### Let's define a churning customer:
 
 - Has visited the site at least 3 times this month
 - and has already made at least $200 worth of purchases in the past 6 month.
@@ -41,7 +41,7 @@ Create your variation, customize everything you need to change for this specific
 ![Edit Experiment](./images/audience_targeting.png "Edit Experiment")
 
 #### Target the experiment only to a specific audience
-On the top right, click "Audience Targeting" and select the `Churning Customers` 
+On the top right, click "Audience Targeting" and select the `Churning Customers`
 audience
 ![Choose Audience](./images/choose_audience.png "Choose Audience")
 
@@ -54,4 +54,5 @@ Click `Options` > `Traffic Allocation` and make sure your new variation gets 100
 ![Choose Variation](./images/choose_variation.png "Choose Variation")
 
 ### You're Done.
-That's it. Nothing else to do, your realtime personalization is in place!
+
+That's it. Nothing else to do, your realtime personalization is now in place!
