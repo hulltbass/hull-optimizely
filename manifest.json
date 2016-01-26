@@ -2,7 +2,7 @@
   "name": "Hull Optimizely",
   "description": "Supercharge Optmizely, send Hull segments as Audiences",
   "picture": "picture.png",
-  "readme": "readme.md",
+  "ui":false,
   "index": "ship.js",
   "version": "0.0.1",
   "settings": [
@@ -29,19 +29,21 @@
           "audience_id"
         ]
       }
-    }],
-    "private_settings": [
+    }
+  ],
+  "private_settings": [
     {
       "name": "optimizely_api_key",
       "title": "Optimizely API Key",
       "type": "string",
-      "required" : true
+      "required": true
     },
     {
       "name": "optimizely_project_id",
       "title": "Optimizely Project ID",
       "type": "integer",
-      "required" : true
+      "required": true
     }
-  ]
+  ],
+  "readme": "readme.md"
 }
