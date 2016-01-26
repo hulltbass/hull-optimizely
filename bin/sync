@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-
 require("babel/register");
+var argv = require('minimist')(process.argv.slice(2));
 var SyncAgent = require('../server/sync_agent');
 
-var ORG_URL = process.env.HULL_ORG_URL;
-var SHIP_ID = process.env.HULL_SHIP_ID;
-var SECRET  = process.env.SECRET;
-
+var ORG_URL = argv.org    || process.env.HULL_ORG_URL;
+var SHIP_ID = argv.ship   || process.env.HULL_SHIP_ID;
+var SECRET  = argv.secret || process.env.SECRET;
 
 if (ORG_URL && SHIP_ID) {
+
   SyncAgent.sync(ORG_URL, SHIP_ID, SECRET).then(function(ship) {
     console.log('Sync ok');
   }, (err) => {
