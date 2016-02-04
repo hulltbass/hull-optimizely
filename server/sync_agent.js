@@ -1,43 +1,20 @@
 import Hull from 'hull';
 import Optimizely from 'optimizely-node';
-import { createHmac } from 'crypto';
-
-function generateShipSecret(shipId, secret) {
-  return createHmac('sha256', secret)
-          .update(shipId)
-          .digest('hex');
-}
-
-function getHullClient(orgUrl, shipId, secret) {
-  return new Hull({
-    orgUrl,
-    platformId: shipId,
-    platformSecret: generateShipSecret(shipId, secret)
-  });
-}
 
 export default class SyncAgent {
 
-  static sync(orgUrl, shipId, secret) {
-    return getHullClient(orgUrl, shipId, secret)
-      .get(shipId)
-      .then((res) => {
-        return new SyncAgent(orgUrl, res, secret).sync();
-      });
+  static sync(hull, ship) {
+    const agent = new SyncAgent(hull, ship);
+    return agent.sync();
   }
 
-  constructor(orgUrl, ship, secret) {
+  constructor(hull, ship) {
+    this.hull = hull;
     this.ship = ship;
-    this.orgUrl = orgUrl;
-    this.secret = secret;
   }
 
   fetchHullSegments() {
-    return this.hull().get('segments').then( res => res.data );
-  }
-
-  hull() {
-    return getHullClient(this.orgUrl, this.ship.id, this.secret);
+    return this.hull.get('segments');
   }
 
   optimizely() {

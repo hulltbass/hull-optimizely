@@ -1,53 +1,40 @@
 import express from 'express';
 import path from 'path';
 import SyncAgent from './sync_agent';
-
-const SECRET = process.env.SECRET || 'shhuutt';
-
-var bodyParser = require('body-parser')
-
-const app = express();
+import { NotifHandler } from 'hull';
 
 
-app.use(express.static(path.resolve(__dirname, '..', 'dist')));
-app.use(express.static(path.resolve(__dirname, '..', 'assets')));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+module.exports = function Api() {
+  const app = express();
 
-app.engine('html', require('ejs').renderFile);
+  const notifHandler = NotifHandler({
+    onSubscribe: function() {
+      console.warn("Hello new subscriber !");
+    },
+    events: {
+      'users_segment:update': function({ message }, { hull, ship }) {
+        SyncAgent.sync(hull, ship);
+      }
+    }
+  });
 
-app.set('views', path.resolve(__dirname, 'views'));
+  app.use(express.static(path.resolve(__dirname, '..', 'dist')));
+  app.use(express.static(path.resolve(__dirname, '..', 'assets')));
 
-app.get('/', (req, res, next) => {
-  res.render('index.html');
-});
+  app.engine('html', require('ejs').renderFile);
 
-app.get('/manifest.json', (req, res, next) => {
-  res.sendFile(path.resolve(__dirname, '..', 'manifest.json'));
-});
+  app.set('views', path.resolve(__dirname, 'views'));
 
+  app.get('/', (req, res, next) => {
+    res.render('index.html');
+  });
 
-function handleSync(req, res) {
-  res.type('application/json');
+  app.get('/manifest.json', (req, res, next) => {
+    res.sendFile(path.resolve(__dirname, '..', 'manifest.json'));
+  });
 
-  const orgUrl = req.body.orgUrl || process.env.HULL_ORG_URL;
-  const shipId = req.body.shipId || process.env.HULL_SHIP_ID;
+  app.post('/notify', notifHandler);
 
-  if (orgUrl && shipId) {
-    SyncAgent.sync(orgUrl, shipId, SECRET).then((ship) => {
-      const data = JSON.stringify(ship.settings.audiences, ' ', 2);
-      res.status(200).send(data).end();
-    }, (err) => {
-      res.status(500).send('Ballotin: ' + err.toString()).end();
-    });
-  } else {
-    res.status(400).send({ error: 'Missing orgUrl or AppId' }).end();
-  }
+  return app;
 }
 
-
-app.post('/sync', handleSync);
-app.get('/sync', handleSync);
-
-
-export default app;

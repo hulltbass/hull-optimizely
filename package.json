@@ -36,11 +36,10 @@
   "dependencies": {
     "babel": "^5.8.23",
     "babel-loader": "^5.3.2",
-    "body-parser": "^1.14.1",
     "core-js": "^1.2.5",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "hull": "^0.5.1",
+    "hull": "^0.5.3",
     "json-loader": "^0.5.3",
     "minimist": "^1.2.0",
     "optimizely-node": "0.0.3",

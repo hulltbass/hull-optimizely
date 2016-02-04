@@ -45,5 +45,6 @@
       "required": true
     }
   ],
-  "readme": "readme.md"
+  "readme": "readme.md",
+  "subscriptions" : [ { "url" : "/notify" } ]
 }

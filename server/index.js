@@ -9,7 +9,7 @@ var config  = require('../webpack.config.js');
 
 var app = express();
 
-app.use(api);
+app.use(api());
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 
