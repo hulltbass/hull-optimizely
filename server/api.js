@@ -8,12 +8,13 @@ module.exports = function Api() {
   const app = express();
 
   const notifHandler = NotifHandler({
-    onSubscribe: function() {
-      console.warn("Hello new subscriber !");
-    },
+
     events: {
       'users_segment:update': function({ message }, { hull, ship }) {
-        SyncAgent.sync(hull, ship);
+        return SyncAgent.sync(hull, ship);
+      },
+      'ship:update': function({ message }, { hull, ship }) {
+        return SyncAgent.sync(hull, ship);
       }
     }
   });

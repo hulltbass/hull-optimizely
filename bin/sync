@@ -2,19 +2,27 @@
 require("babel/register");
 var argv = require('minimist')(process.argv.slice(2));
 var SyncAgent = require('../server/sync_agent');
+var Hull = require('hull');
 
-var ORG_URL = argv.org    || process.env.HULL_ORG_URL;
-var SHIP_ID = argv.ship   || process.env.HULL_SHIP_ID;
-var SECRET  = argv.secret || process.env.SECRET;
+var ORG_URL = argv.org || process.env.HULL_ORG_URL;
+var SHIP_ID = argv.ship || process.env.HULL_SHIP_ID;
+var SHIP_SECRET = argv.secret || process.env.HULL_SHIP_SECRET;
 
-if (ORG_URL && SHIP_ID) {
-
-  SyncAgent.sync(ORG_URL, SHIP_ID, SECRET).then(function(ship) {
-    console.log('Sync ok');
-  }, (err) => {
-    console.warn('Error', err.toString());
-    console.warn('Error', err.stack);
+if (ORG_URL && SHIP_ID && SHIP_SECRET) {
+  var hull = new Hull({
+    orgUrl: ORG_URL,
+    platformId: SHIP_ID,
+    platformSecret: SHIP_SECRET
   });
+
+  hull.get(SHIP_ID).then(function(ship) {
+    SyncAgent.sync(hull, ship, { debug: true }).then(function() {
+    }, function(err) {
+      console.warn('Error', err.toString());
+      console.warn('Error', err.stack);
+    });
+  });
+
 } else {
   console.warn('Missing credentials');
 }

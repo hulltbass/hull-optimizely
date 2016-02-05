@@ -1,35 +1,33 @@
-require('babel/register');
+import express from 'express';
+import api from './api';
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import config from '../webpack.config.js';
 
-var express = require('express');
-var api = require('./api');
-var webpack = require('webpack');
-var webpackMiddleware = require('webpack-dev-middleware');
-var config  = require('../webpack.config.js');
+export default function(port) {
+  var app = express();
 
+  app.use(api());
 
-var app = express();
-
-app.use(api());
-
-const isDeveloping = process.env.NODE_ENV !== 'production';
+  const isDeveloping = process.env.NODE_ENV !== 'production';
 
 
-if (isDeveloping) {
-  const compiler = webpack(config);
+  if (isDeveloping) {
+    const compiler = webpack(config);
 
-  app.use(webpackMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    contentBase: 'src',
-    stats: {
-      colors: true,
-      hash: false,
-      timings: true,
-      chunks: false,
-      chunkModules: false,
-      modules: false
-    }
-  }));
+    app.use(webpackMiddleware(compiler, {
+      publicPath: config.output.publicPath,
+      contentBase: 'src',
+      stats: {
+        colors: true,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false,
+        modules: false
+      }
+    }));
+  }
+
+  app.listen(port);
 }
-
-
-app.listen(process.env.PORT || 8082);

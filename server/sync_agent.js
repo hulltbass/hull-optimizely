@@ -1,19 +1,40 @@
 import Hull from 'hull';
 import Optimizely from 'optimizely-node';
+import Promise from 'bluebird';
 
 export default class SyncAgent {
 
-  static sync(hull, ship) {
-    const agent = new SyncAgent(hull, ship);
+  static sync(hull, ship, options={}) {
+    const agent = new SyncAgent(hull, ship, options);
     return agent.sync();
   }
 
-  constructor(hull, ship) {
+  constructor(hull, ship, options={}) {
     this.hull = hull;
     this.ship = ship;
+    this.options = options || {};
+    this.__debug__ = { started_at: new Date(), line: 0 };
+  }
+
+  debug(msg, data) {
+    try {
+      if (this.options.debug) {
+        this.__debug__.line  += 1;
+        const { orgUrl, platformId } = this.hull.configuration();
+        const key = `[${[new Date().toISOString(), platformId, this.__debug__.line].join(' - ')}]`;
+        if (data) {
+          console.log(key, msg, JSON.stringify(data));
+        } else {
+          console.log(key, msg);
+        }
+      }
+    } catch(err) {
+      console.warn('dbg error', err);
+    }
   }
 
   fetchHullSegments() {
+    this.debug('fetchHullSegments')
     return this.hull.get('segments');
   }
 
@@ -35,6 +56,7 @@ export default class SyncAgent {
   // have a hull-segment-id in their description
   // and index them by hull-segment-id
   fetchOptimizelyAudiences() {
+    this.debug('fetchOptimizelyAudiences');
     const fetch = this.optimizely().audiences.fetchAll({
       project_id: this.getOptimizelyProjectId()
     });
@@ -55,6 +77,7 @@ export default class SyncAgent {
   }
 
   saveAudience(data) {
+    this.debug('saveAudience');
     const Audiences = this.optimizely().audiences;
     let audience;
     if (Audiences.isInstance(data)) {
@@ -66,6 +89,7 @@ export default class SyncAgent {
   }
 
   syncAudience(segment, audience) {
+    this.debug('syncAudience');
     const audienceName = `[hull] ${segment.name}`;
     let saved;
     if (audience) {
@@ -84,6 +108,7 @@ export default class SyncAgent {
       });
     }
     return saved.then((audience) => {
+      this.debug('Audience saved', audience.name);
       return {
         name: segment.name,
         audience_id: audience.id,
@@ -93,15 +118,17 @@ export default class SyncAgent {
   }
 
   saveAudienceSettings(audiences) {
+    this.debug('saveAudienceSettings')
     const settings = Object.assign(
       {},
       this.ship.settings,
       { audiences }
     );
-    return this.hull().put(this.ship.id, { settings });
+    return this.hull.put(this.ship.id, { settings });
   }
 
   sync() {
+    this.debug('Starting sync');
     const segments = this.fetchHullSegments();
     const audiences = this.fetchOptimizelyAudiences();
 
@@ -111,13 +138,13 @@ export default class SyncAgent {
         const syncing = segments.map((segment) => {
           return this.syncAudience(segment, audiences[segment.id]);
         });
-
         return Promise.all(syncing).then((audienceSettings) => {
           this.saveAudienceSettings(audienceSettings).then((savedShip) => {
+            this.debug('Sync done');
             return resolve(savedShip);
           })
         });
-      }, reject);
+      });
     });
   }
 
