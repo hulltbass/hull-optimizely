@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/ship.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "./bin/start",
     "lint": "eslint src",
     "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors",
     "sync": "./bin/sync",
