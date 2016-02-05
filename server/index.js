@@ -4,10 +4,10 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import config from '../webpack.config.js';
 
-export default function(port) {
+export default function(port, options = {}) {
   var app = express();
 
-  app.use(api());
+  app.use(api(options));
 
   const isDeveloping = process.env.NODE_ENV !== 'production';
 

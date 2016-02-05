@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 require("babel/register");
-var Server = require('../src/index');
-var PORT = process.env.PORT || 5000;
+var Server = require('../server/index');
+var port = process.env.PORT || 5000;
+var debug = !!process.env.DEBUG;
 
-console.warn("Starting on PORT " + PORT);
-Server(PORT);
+
+console.warn("Starting on PORT " + port);
+Server(port, { debug: debug });

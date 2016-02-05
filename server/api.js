@@ -4,17 +4,17 @@ import SyncAgent from './sync_agent';
 import { NotifHandler } from 'hull';
 
 
-module.exports = function Api() {
+module.exports = function Api(options = {}) {
   const app = express();
-
+  const debug = !!(options || {}).debug;
   const notifHandler = NotifHandler({
 
     events: {
       'users_segment:update': function({ message }, { hull, ship }) {
-        return SyncAgent.sync(hull, ship);
+        return SyncAgent.sync(hull, ship, { debug });
       },
       'ship:update': function({ message }, { hull, ship }) {
-        return SyncAgent.sync(hull, ship);
+        return SyncAgent.sync(hull, ship, { debug });
       }
     }
   });
