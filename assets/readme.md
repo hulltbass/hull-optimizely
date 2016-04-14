@@ -2,11 +2,12 @@
 
 [Visit Optimizely website](http://optimizely.com)
 
-__The Optimizely Ship allows you to sync your Hull Segments as Optimizely Audiences in real-time.__
+__The Optimizely Ship allows you to sync your Hull Segments as Optimizely Audiences in real-time. You need a Platform with Hull.js installed to make this work__
 
 When a user matches a segment you created in Hull using properties and events, he will be added immediately to a matching Optimizely Audience, allowing you to create experiments and customize pages in real-time.
 
 ### Instant Personalization with Optimizely and Hull
+
 _More and more, customers expect brands to understand their current situation, and adapt to their needs. In this tutorial, we'll look at the case of customers who already have bought once something from you but aren't anymore. They keep coming back and looking at some product on your website, but don't make a purchasing decision. Obviously they're interested in something but they need a little help._
 
 _Let's give them a little nudge, by offering a 10% off coupon._

@@ -1,6 +1,7 @@
 {
-  "name": "Hull Optimizely",
-  "description": "Supercharge Optmizely, send Hull segments as Audiences",
+  "name": "Optimizely",
+  "description": "Send Hull Segments as Optimizely audiences, use it to personalize for each customer",
+  "tags": ["client", "outgoing"],
   "picture": "picture.png",
   "index": "ship.js",
   "readme": "readme.md",
