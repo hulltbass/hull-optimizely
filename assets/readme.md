@@ -39,8 +39,6 @@ Copy the API key and then go back to the connector in Hull where you can then pa
 
 You'll then need your Project ID which can be found from the home screen by clicking "Settings" and copying the respective project ID. 
 
-[Manage API](./images/ProjectID_png.png "ProjectID")
-
 Paste the Project ID on the same screen as the API key and hit save in the top right corner.
 
 After a few minutes, you should see all your customer segments from Hull replicated as Optimizely Audiences
