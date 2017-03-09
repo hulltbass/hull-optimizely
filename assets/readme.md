@@ -37,7 +37,9 @@ Once you've installed the connector, you must copy the correct API key. You can 
 
 Copy the API key and then go back to the connector in Hull where you can then paste it to the empty API Key field. If there isn't an API token already there you will have to hit "Generate" on the right hand side of the same page. 
 
-You'll then need your Project ID which can be found from the home screen by clicking "Settings" and copying the respective project ID. k
+You'll then need your Project ID which can be found from the home screen by clicking "Settings" and copying the respective project ID.
+
+![project ID](./images/ProjectID_png.png "Project")
 
 Paste the Project ID on the same screen as the API key and hit save in the top right corner.
 
