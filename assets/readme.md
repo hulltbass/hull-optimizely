@@ -35,7 +35,7 @@ Once you've installed the connector, you must copy the correct API key. You can 
 
 ![Manage API](./images/FindingAPIToken.png "Finding API Token")
 
-Copy the API key and then go back to the connector in Hull where you can then paste it to the empty API Key field.
+Copy the API key and then go back to the connector in Hull where you can then paste it to the empty API Key field. If there isn't an API token already there you will have to hit "Generate" on the right hand side of the same page. 
 
 ![Manage API](./images/HullAPI.png "Hull API")
 
