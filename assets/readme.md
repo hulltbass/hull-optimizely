@@ -29,6 +29,18 @@ A good way to name your segments is to describe "who they are", instead of "what
 
 ![Install Optimizely Ship](./images/install_ship.png "Install Optimizely Ship")
 
+Once you've installed the connector, you must copy the correct API key. You can locate it by logging into your Optimizely account and going to your account settings in the top right corner.Then go to Apps and click the "Manage API Tokens" hyperlink. 
+
+![Manage API](./images/FindingAPIToken.png "Finding API Token")
+
+Copy the API key and then go back to the connector in Hull where you can then paste it to the empty API Key field.
+
+You'll then need your Project ID which can be found from the home screen by clicking "Settings" and copying the respective project ID. 
+
+![Manage API](./images/ProjectID.png "Project ID")
+
+Paste the Project ID on the same screen as the API key and hit save in the top right corner.
+
 After a few minutes, you should see all your customer segments from Hull replicated as Optimizely Audiences
 
 ![Optimizely Audiences](./images/audiences.png "Optimizely Audiences")
