@@ -29,6 +29,8 @@ A good way to name your segments is to describe "who they are", instead of "what
 
 ![Install Optimizely Ship](./images/install_ship.png "Install Optimizely Ship")
 
+### Inserting Optimizely's Credentials into Hull
+
 Once you've installed the connector, you must copy the correct API key. You can locate it by logging into your Optimizely account and going to your account settings in the top right corner.Then go to Apps and click the "Manage API Tokens" hyperlink. 
 
 ![Manage API](./images/FindingAPIToken.png "Finding API Token")
